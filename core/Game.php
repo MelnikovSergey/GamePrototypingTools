@@ -2,33 +2,30 @@
 
 class Game
 {
+	public $player;
+	public $bot;
+
 	public function __construct()
 	{	
 		echo 'Game Started <br>';
 	}
 
-	public function createPlayer($name)
+	public function createCharacter($type, $name)
 	{	
-		$this->player = new Player($this, $name);
-	}
+		$type = strtolower($type);
 
-	public function createBot($name)
-	{	
-		$this->bot = new Bot($this, $name);
-	}	
+		switch($type) 
+		{
+			case 'player':
+				$this->player = new Player($this, $name);
+				break;
 
-	public function setPlayerHp($int)
-	{	
-		$this->player->setHp($int);
-	}
+			case 'bot':
+				$this->bot = new Bot($this, $name);
+				break;
 
-	public function setPlayerDmg($int)
-	{	
-		$this->player->setDmg($int);
-	}		
-
-	public function showPlayer()
-	{	
-		echo $this->player;
+			default:
+				echo 'You are trying to create a character that is not intended by the framework.';							
+		}
 	}
 }
