@@ -16,6 +16,31 @@ abstract class Abstract_Character
 		$this->_dmg = (int) $int;
 	}		
 
+	public function getHp()
+	{	
+		return $this->_hp;
+	}
+
+	public function getDmg()
+	{	
+		return $this->_dmg;
+	}	
+
+	public function battle($defender)
+	{	
+		$defender = (object) $defender;
+		
+		# First get the defenders statistic
+		$hp = $defender->getHp();
+
+		# Now get the attackers statistic
+		#  Теперь получите статистику атакующих
+		$dmg = $this->getDmg();
+
+		$defender->setHp($hp - $dmg);
+		echo 'Defender is at' . $defender->getHp();
+	}
+
 	public function showCharacter()
 	{	
 		echo $this;
