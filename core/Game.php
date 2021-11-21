@@ -2,8 +2,8 @@
 
 class Game
 {
-	public $player;
-	public $bot;
+	public $player = array();
+	public $bot = array();
 
 	public function __construct()
 	{	
@@ -13,19 +13,25 @@ class Game
 	public function createCharacter($type, $name)
 	{	
 		$type = strtolower($type);
+		$name = ucfirst(strtolower($name));
+
+		if(isset($this->player[$name])) {
+			echo 'This player' . $name . 'is taken';
+			return false;
+		}
 
 		switch($type) 
 		{
 			case 'player':
-				$this->player = new Player($this, $name);
+				$this->player[$name] = new Player($this, $name);
 				break;
 
 			case 'bot':
-				$this->bot = new Bot($this, $name);
+				$this->bot[$name] = new Bot($this, $name);
 				break;
 
 			default:
-				echo 'You are trying to create a character that is not intended by the framework.';							
+				echo 'You are trying to create a character that is not intended by the framework.';
 		}
 	}
 }
