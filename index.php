@@ -24,8 +24,16 @@ $game->bot['Boss']->setHp(80);
 $game->bot['Boss']->setDmg(150);
 $game->bot['Boss']->showCharacter();
 
+$session->registerCharacter('Boss', $game->bot['Boss']);
+
 $game->player['Leon']->battle($game->bot['Boss']);
 $game->player['Leon']->battle($game->bot['Boss']);
 
 $session->getCharacter('Leon');
 $session->showSession();
+
+$leon = $session->getCharacter('Leon');
+print_r($leon);
+
+$game->inportCharacter('Leon', $session->getCharacter('Leon'));
+$game->inportCharacter('Boss', $session->getCharacter('Boss'));
