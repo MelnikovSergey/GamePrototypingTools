@@ -10,6 +10,28 @@ class Game
 		echo 'Game Started <br>';
 	}
 
+	public function inportCharacter($name, $object)
+	{
+		echo '<pre>';
+		echo $name;
+		echo $object;
+		echo '</pre>';
+
+		$object = (object) $object;
+
+		$type = get_class($object);
+		$playerOrBot = strtolower($type);
+
+		# Statistic to build the object
+		$name = $object->getName();
+		$hp = $object->getHp();
+		$dmg = $object->getDmg();
+
+		$this->{$playerOrBot}[$name] = new $type($this, $name);
+		$this->{$playerOrBot}[$name]->setHp($hp);
+		$this->{$playerOrBot}[$name]->setDmg($dmg);
+	}
+
 	public function createCharacter($type, $name)
 	{	
 		$type = strtolower($type);
