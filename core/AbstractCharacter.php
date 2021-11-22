@@ -36,11 +36,9 @@ abstract class Abstract_Character
 		$defender = (object) $defender;
 		
 		# First get the defenders stats
-		#  Сначала получите статистику защитников
 		$hp = $defender->getHp();
 
 		# Now get the attackers stats
-		#  Теперь получите статистику атакующих
 		$dmg = $this->getDmg();
 
 		$defender->setHp($hp - $dmg);
