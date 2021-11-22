@@ -14,7 +14,12 @@ abstract class Abstract_Character
 	public function setDmg($int)
 	{	
 		$this->_dmg = (int) $int;
-	}		
+	}
+
+	public function getName()
+	{	
+		return $this->_name;
+	}			
 
 	public function getHp()
 	{	
@@ -30,10 +35,12 @@ abstract class Abstract_Character
 	{	
 		$defender = (object) $defender;
 		
-		# First get the defenders statistic
+		# First get the defenders stats
+		#  Сначала получите статистику защитников
 		$hp = $defender->getHp();
 
-		# Now get the attackers statistic
+		# Now get the attackers stats
+		#  Теперь получите статистику атакующих
 		$dmg = $this->getDmg();
 
 		$defender->setHp($hp - $dmg);
