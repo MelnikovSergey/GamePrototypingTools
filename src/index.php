@@ -1,7 +1,7 @@
 <?php
 
 define('ROOT', $_SERVER['DOCUMENT_ROOT']);
-define('CORE_DIR', ROOT . '/core');
+define('CORE_DIR', ROOT . '/src/core');
 
 include_once(CORE_DIR . '/AbstractCharacter.php');
 include_once(CORE_DIR . '/Session.php');
