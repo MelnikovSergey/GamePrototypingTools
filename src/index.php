@@ -1,13 +1,30 @@
 <?php
 
 define('ROOT', $_SERVER['DOCUMENT_ROOT']);
-define('CORE_DIR', ROOT . '/src/core');
 
-include_once(CORE_DIR . '/AbstractCharacter.php');
-include_once(CORE_DIR . '/Session.php');
-include_once(CORE_DIR . '/Game.php');
-include_once(CORE_DIR . '/Player.php');
-include_once(CORE_DIR . '/Bot.php');
+include_once(ROOT . '/src/app/core/AbstractCharacter.php');
+include_once(ROOT . '/src/app/flow/Session.php');
+
+include_once(ROOT . '/src/app/debug.php');
+
+
+use app\core\Game;
+use app\core\Player;
+use app\core\Bot;
+
+spl_autoload_register(function($class) {
+	$path = str_replace('\\', '/', $class . '.php');
+	
+	if(file_exists($path)) {
+		include_once $path;
+	}
+});
+
+
+/**
+ * In search of use cases
+ * Experiment: 1 
+*/ 
 
 $session = new Session();
 $game = new Game();
@@ -33,7 +50,7 @@ $session->getCharacter('Leon');
 $session->showSession();
 
 $leon = $session->getCharacter('Leon');
-print_r($leon);
+# print_r($leon);
 
 $game->inportCharacter('Leon', $session->getCharacter('Leon'));
 $game->inportCharacter('Boss', $session->getCharacter('Boss'));

@@ -1,0 +1,54 @@
+﻿* {
+	margin: 0;
+	padding: 0;   
+}
+
+.container {
+	width: 100%;
+	height: 100vh;
+	background-image: url(../images/bg.png);
+	background-size: cover;
+	position: relative;
+}
+
+.hero-stats,
+.enemy-stats {
+	width:
+	height:
+	color: #fff;
+	border-radius: 15px;
+	border: 2px solid $fff;
+	background-color: #eee;
+	position: absolute;
+}
+
+.hero-stat {
+	top: 0;
+	left: 10px;
+}
+
+.enemy-stat {
+	top: 0;
+	right: 10px;
+}
+
+.hero-container, 
+.enemy-container {
+	width: 180px;
+	height: 200px
+	background-color: #eee;
+	position: absolute;
+	background-size: 3200px;
+}
+
+.hero-container {
+	top: 220px;
+	left: 280px;
+	background-image: url(../images/hero-img.png);
+}
+
+.enemy-container {
+	top: 220px;
+	right: 280px;
+	background-image: url(../images/enemy-img.png);
+}
