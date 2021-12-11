@@ -25,4 +25,31 @@
 		imageUrl = ""
 	};
 
+	let archer = {
+		name: "Veng",
+		level: "",
+		weapon: "Arbalest",
+		armor: 0.1,
+		hp: 80,
+		dmg: 500,
+		units: 10,
+		money: '350',
+		imageUrl = ""
+	};
+
+	let knight = {
+		name: "Artur",
+		level: "",
+		weapon: "Sword",
+		armor: 0.1,
+		hp: 80,
+		dmg: 500,
+		units: 10,
+		money: '850',
+		imageUrl = ""
+	};
+
+	let heroesArray = [];
+	let enemiesArray = [];
+	
 }(document));
