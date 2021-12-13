@@ -49,7 +49,12 @@
 		imageUrl = ""
 	};
 
-	let heroesArray = [];
-	let enemiesArray = [];
+	let heroesArray;
+	let enemiesArray;
+
+	function init() {
+		heroesArray = [heroGuy, knight];
+		enemiesArray = [enemyBoss, archer];
+	}
 	
 }(document));
