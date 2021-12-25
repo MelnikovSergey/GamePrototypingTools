@@ -57,7 +57,7 @@
 		heroesArray = [heroGuy, knight];
 		enemiesArray = [enemyBoss, archer];
 
-		let heroIndex = prompt("Выберите героя: 0 - heroGuy, 1 - enemyBoss");
+		let heroIndex = prompt("РЎРґРµР»Р°Р№С‚Рµ СЃРІРѕР№ РІС‹Р±РѕСЂ: 0 - heroGuy, 1 - enemyBoss");
 		let hero = heroesArray[heroIndex];
 		// console.log(hero);
 
