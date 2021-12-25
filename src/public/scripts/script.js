@@ -49,12 +49,34 @@
 		imageUrl = ""
 	};
 
+	// Global arrays
 	let heroesArray;
 	let enemiesArray;
 
 	function init() {
 		heroesArray = [heroGuy, knight];
 		enemiesArray = [enemyBoss, archer];
+
+		let heroIndex = prompt("Выберите героя: 0 - heroGuy, 1 - enemyBoss");
+		let hero = heroesArray[heroIndex];
+		// console.log(hero);
+
+		document.getElementById('hero').style.backgroundImage = 'url(${hero.imageUrl})'; 
 	}
-	
+
+	function getItem(item) {
+		document.getElementById(item); 
+	}
+
+	function updateStats() {
+		getItem('hero-name').innerHTML = 'name: '     + hero.name;
+		getItem('hero-level').innerHTML = 'level: '   + hero.level;
+		getItem('hero-weapon').innerHTML = 'weapon: ' + hero.weapon;
+		getItem('hero-armor').innerHTML = 'armor: '   + hero.armor;
+		getItem('hero-hp').innerHTML = 'hp: '         + hero.hp;
+		getItem('hero-dmg').innerHTML = 'dmg: '       + hero.dmg;
+		getItem('hero-units').innerHTML = 'units: '   + hero.hp;
+		getItem('hero-money').innerHTML = 'money: '   + hero.dmg;
+	}
+
 }(document));

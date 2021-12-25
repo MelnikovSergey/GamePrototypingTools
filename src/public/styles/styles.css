@@ -52,3 +52,10 @@
 	right: 280px;
 	background-image: url(../images/enemy-img.png);
 }
+
+.controls {
+	margin: 5px;
+	padding: 25px;
+	border-radius: 5px;
+	border: 2px solid #eee;
+}
