@@ -61,12 +61,19 @@
 		let hero = heroesArray[heroIndex];
 		// console.log(hero);
 
-		document.getElementById('hero').style.backgroundImage = 'url(${hero.imageUrl})'; 
+		document.getElementById('hero').style.backgroundImage = 'url(${hero.imageUrl})';
+		
+		// console.log(randomNumber(1, 100));
 	}
 
 	function getItem(item) {
 		document.getElementById(item); 
 	}
+	
+	function randomNumber(min, max) {
+		let randomNum = min + Math.random() * (max + 1 - min);
+		return Math.round(randomNum);
+	} 
 
 	function updateStats() {
 		getItem('hero-name').innerHTML = 'name: '     + hero.name;
