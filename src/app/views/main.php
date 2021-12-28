@@ -39,7 +39,7 @@
 		<div class="enemy-container" id="enemy"></div>
 
 		<div class="controls">
-			<button>Attack</button>
+			<button id="attack">Attack</button>
 		</div> 
 	</div>
 </main>
