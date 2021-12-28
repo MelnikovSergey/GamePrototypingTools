@@ -64,15 +64,28 @@
 		document.getElementById('hero').style.backgroundImage = 'url(${hero.imageUrl})';
 		
 		// console.log(randomNumber(1, 100));
+		
+		getItem('attack').onclick = function(){
+			console.log('Test');
+		};
 	}
 
 	function getItem(item) {
 		document.getElementById(item); 
 	}
-	
+
 	function randomNumber(min, max) {
 		let randomNum = min + Math.random() * (max + 1 - min);
 		return Math.round(randomNum);
+	} 
+
+	function animateHeroAttack() {
+		const diff = 100;
+		const interval = 100;
+
+		let position = 0;
+
+		getItem('hero').style.transform = "translate(100px, -150px)";
 	} 
 
 	function updateStats() {
