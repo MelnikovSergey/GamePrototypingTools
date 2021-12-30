@@ -39,6 +39,7 @@
 	background-color: #eee;
 	position: absolute;
 	background-size: 3200px;
+	transition: all 2s;
 }
 
 .hero-container {

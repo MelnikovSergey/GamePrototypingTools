@@ -53,20 +53,19 @@
 	let heroesArray;
 	let enemiesArray;
 
+	let intervalHeroAttack;
+
 	function init() {
 		heroesArray = [heroGuy, knight];
 		enemiesArray = [enemyBoss, archer];
 
-		let heroIndex = prompt("Сделайте свой выбор: 0 - heroGuy, 1 - enemyBoss");
+		let heroIndex = prompt("Выберите героя: 0 - heroGuy, 1 - enemyBoss");
 		let hero = heroesArray[heroIndex];
-		// console.log(hero);
 
 		document.getElementById('hero').style.backgroundImage = 'url(${hero.imageUrl})';
 		
-		// console.log(randomNumber(1, 100));
-		
 		getItem('attack').onclick = function(){
-			console.log('Test');
+			animateHeroAttack();
 		};
 	}
 
@@ -81,11 +80,14 @@
 
 	function animateHeroAttack() {
 		const diff = 100;
-		const interval = 100;
+		const interval = 1000;
 
 		let position = 0;
 
 		getItem('hero').style.transform = "translate(100px, -150px)";
+		intervalHeroAttack = setInterval(() => {
+			getItem('hero').style.backgroundPosition = `${position}, 0px`;
+		}, interval);
 	} 
 
 	function updateStats() {
