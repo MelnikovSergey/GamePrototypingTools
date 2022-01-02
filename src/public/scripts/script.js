@@ -63,7 +63,7 @@
 		let hero = heroesArray[heroIndex];
 
 		document.getElementById('hero').style.backgroundImage = 'url(${hero.imageUrl})';
-		
+
 		getItem('attack').onclick = function(){
 			animateHeroAttack();
 		};
@@ -80,14 +80,28 @@
 
 	function animateHeroAttack() {
 		const diff = 100;
-		const interval = 1000;
+		const interval = 100;
 
 		let position = 0;
 
 		getItem('hero').style.transform = "translate(100px, -150px)";
 		intervalHeroAttack = setInterval(() => {
-			getItem('hero').style.backgroundPosition = `${position}, 0px`;
+			getItem('hero').style.backgroundPosition = `${position}px 0px`;
+			
+			if(position < 2000) {
+				position = position + diff;
+			} else {
+				position = 0;
+				getItem('hero').style.backgroundPosition = `${position}px 0px`;
+				getItem('hero').style.transform = "translate(0, 0)";
+				stopAnimations(intervalHeroAttack);
+			}
+
 		}, interval);
+
+		function stopAnimations(item) {
+			clearInterval(item);	
+		}
 	} 
 
 	function updateStats() {

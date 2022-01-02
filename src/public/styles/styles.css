@@ -34,12 +34,14 @@
 
 .hero-container, 
 .enemy-container {
-	width: 180px;
-	height: 200px
+	width: 120px;
+	height: 150px;
 	background-color: #eee;
 	position: absolute;
 	background-size: 3200px;
-	transition: all 2s;
+	background-position: 0 2500px;
+	transition: transform 2s;
+	
 }
 
 .hero-container {
