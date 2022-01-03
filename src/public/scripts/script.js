@@ -54,6 +54,7 @@
 	let enemiesArray;
 
 	let intervalHeroAttack;
+	let intervalEnemyAttack;
 	let intervalHit;
 
 	function init() {
@@ -95,9 +96,37 @@
 				position = 0;
 				getItem('hero').style.backgroundPosition = `${position}px 0px`;
 				getItem('hero').style.transform = "translate(0, 0)";
+				
+				setTimeout(() => {
+					animateEnemyAttack();
+				}, 2000);
 
-				animationHit(enemy, dmg-enemy-container, dmg);
+				animationHit('enemy', 'dmg-enemy-container', dmg);
 				stopAnimations(intervalHeroAttack);
+			}
+
+		}, interval);
+	}
+
+	function animateEnemyAttack() {
+		const diff = 100;
+		const interval = 100;
+
+		let position = 0;
+
+		getItem('enemy').style.transform = "translate(100px, -150px)";
+		intervalEnemyAttack = setInterval(() => {
+			getItem('enemy').style.backgroundPosition = `${position}px 0px`;
+			
+			if(position < 2000) {
+				position = position + diff;
+			} else {
+				position = 0;
+				getItem('enemy').style.backgroundPosition = `${position}px 0px`;
+				getItem('enemy').style.transform = "translate(0, 0)";
+
+				animationHit('hero', 'dmg-hero-container', dmg);
+				stopAnimations(intervalEnemyAttack);
 			}
 
 		}, interval);
@@ -135,15 +164,48 @@
 		clearInterval(item);	
 	} 
 
+	function battle() {
+		//...
+	}
+
+	function checkHp() {
+		//...
+	}
+
+	function balanceHero() {
+		hero.level  += hero.level++;
+		hero.weapon += hero.weapon + 'val';
+		hero.armor  += hero.armor + 'val';
+		hero.hp     += hero.hp * 10;
+		hero.dmg    += hero.dmg * hero.hp / 2;
+		hero.units  += hero.units;
+		hero.money  += hero.money;
+	}
+
+	function endGame() {
+		alert("Game Over!");
+		let reload = confirm('Start Again?');
+
+		if(reload) {
+			location.reload();
+		}
+
+
+	}
+
 	function updateStats() {
-		getItem('hero-name').innerHTML = 'name: '     + hero.name;
-		getItem('hero-level').innerHTML = 'level: '   + hero.level;
-		getItem('hero-weapon').innerHTML = 'weapon: ' + hero.weapon;
-		getItem('hero-armor').innerHTML = 'armor: '   + hero.armor;
-		getItem('hero-hp').innerHTML = 'hp: '         + hero.hp;
-		getItem('hero-dmg').innerHTML = 'dmg: '       + hero.dmg;
-		getItem('hero-units').innerHTML = 'units: '   + hero.hp;
-		getItem('hero-money').innerHTML = 'money: '   + hero.dmg;
+		if(hero.hp <= 0) {
+			endGame();
+		} else {
+			getItem('hero-name').innerHTML = 'name: '     + hero.name;
+			getItem('hero-level').innerHTML = 'level: '   + hero.level;
+			getItem('hero-weapon').innerHTML = 'weapon: ' + hero.weapon;
+			getItem('hero-armor').innerHTML = 'armor: '   + hero.armor;
+			getItem('hero-hp').innerHTML = 'hp: '         + hero.hp;
+			getItem('hero-dmg').innerHTML = 'dmg: '       + hero.dmg;
+			getItem('hero-units').innerHTML = 'units: '   + hero.units;
+			getItem('hero-money').innerHTML = 'money: '   + hero.money;
+		}
 	}
 
 }(document));
