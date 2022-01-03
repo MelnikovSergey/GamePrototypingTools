@@ -56,6 +56,15 @@
 	background-image: url(../images/enemy-img.png);
 }
 
+.dmg-container {
+	position: absolute;
+	top: 25px;
+	right: 50px;
+	width: 25px;
+	height: 25px;
+	display: none;
+}
+
 .controls {
 	margin: 5px;
 	padding: 25px;

@@ -54,6 +54,7 @@
 	let enemiesArray;
 
 	let intervalHeroAttack;
+	let intervalHit;
 
 	function init() {
 		heroesArray = [heroGuy, knight];
@@ -63,7 +64,7 @@
 		let hero = heroesArray[heroIndex];
 
 		document.getElementById('hero').style.backgroundImage = 'url(${hero.imageUrl})';
-
+		
 		getItem('attack').onclick = function(){
 			animateHeroAttack();
 		};
@@ -94,14 +95,44 @@
 				position = 0;
 				getItem('hero').style.backgroundPosition = `${position}px 0px`;
 				getItem('hero').style.transform = "translate(0, 0)";
+
+				animationHit(enemy, dmg-enemy-container, dmg);
 				stopAnimations(intervalHeroAttack);
 			}
 
 		}, interval);
+	}
 
-		function stopAnimations(item) {
-			clearInterval(item);	
-		}
+	function animationHit(character, dmgContainer, dmg) {
+		const diff = 10;
+		const interval = 100;
+
+		let position = 0;
+
+		intervalHit = setInterval(() => {
+			getItem(character).style.transform = `translate(0px, ${position}px)`;
+
+			getItem('dmg-container').innerHTML = dmg;
+			getItem('dmg-container').style.display = "block";
+			getItem('dmg-container').style.transform = `translate(0px, ${position}px)`;
+			
+			if(position < 50) {
+				position = position + diff;
+			} else {
+				position = 0;
+				getItem(character).style.transform = `translate(0px, 0px)`;
+
+				getItem('dmg-container').style.transform = `translate(0px, 0px)`;
+				getItem('dmg-container').style.display = "none";
+
+				stopAnimations(intervalHit);
+			}
+
+		}, interval);	
+	} 
+
+	function stopAnimations(item) {
+		clearInterval(item);	
 	} 
 
 	function updateStats() {

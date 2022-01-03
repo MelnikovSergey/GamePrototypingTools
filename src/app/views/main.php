@@ -36,7 +36,10 @@
 		</div>
 
 		<div class="hero-container" id="hero"></div>
+		<div class="dmg-container" id="dmg-hero-container"></div>
+
 		<div class="enemy-container" id="enemy"></div>
+		<div class="dmg-container" id="dmg-enemy-container"></div>
 
 		<div class="controls">
 			<button id="attack">Attack</button>
